@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    <adapter
+      name="bika.accel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      factory="bika.accel.setupdata.SetupDataSetList"
+      provides="bika.lims.interfaces.ISetupDataSetList"/>
+
+</configure>

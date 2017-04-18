@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="bika">
+
+    <adapter
+      factory=".widgetvisibility.AnalysisRequestFieldsVisibility"
+      provides="bika.lims.interfaces.IATWidgetVisibility"
+      for="bika.lims.interfaces.IAnalysisRequest"
+      name="AnalysisRequestFieldsVisibility"
+    />
+
+    <adapter
+      factory=".widgetvisibility.PatientFieldsVisibility"
+      provides="bika.lims.interfaces.IATWidgetVisibility"
+      for="bika.health.interfaces.IPatient"
+      name="PatientFieldsVisibility"
+    />
+      factory=".publication.smsNotify"
+      provides="bika.lims.interfaces.ICustomPubPref"
+      for="zope.interface.Interface"
+      name="smsNotify"
+    />
+
+    <adapter
+      factory=".publication.smsResult"
+      provides="bika.lims.interfaces.ICustomPubPref"
+      for="zope.interface.Interface"
+      name="smsResult"
+    />
+
+</configure>

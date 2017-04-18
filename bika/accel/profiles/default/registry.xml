@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Operation Definitions -->
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="bika">
+
+  <!-- Hidden Attributes-->
+  <record name="bika.accel.sms.port_number" interface="bika.accel.sms" field="port_number">
+    <field type="plone.registry.field.Int">
+      <min>0</min>
+      <title>API Server Port</title>
+    </field>
+    <value />
+  </record>
+
+  <record name="bika.accel.sms.root_url" interface="bika.accel.sms" field="root_url">
+    <field type="plone.registry.field.TextLine">
+      <default>http://localhost</default>
+      <title>API Root URL</title>
+    </field>
+    <value />
+  </record>
+
+  <record name="bika.accel.sms.send_url" interface="bika.accel.sms" field="send_url">
+    <field type="plone.registry.field.TextLine">
+      <default>/send/sms/</default>
+      <title>API Send URL</title>
+    </field>
+    <value />
+  </record>
+
+</registry>

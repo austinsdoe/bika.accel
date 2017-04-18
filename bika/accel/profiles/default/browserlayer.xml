@@ -1,0 +1,7 @@
+
+<layers>
+    <layer
+        name="bika.accel"
+         interface="bika.accel.interfaces.IBikaAccel"
+         />
+</layers>
