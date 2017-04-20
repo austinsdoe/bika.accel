@@ -25,6 +25,7 @@
   <include package=".setupdata"/>
   <include package=".upgrade"/>
   <include package=".subscribers"/>
+  <include package=".stickers"/>
   <include file="profiles.zcml" />
 
   <cmf:registerDirectory name="skins" directory="skins" recursive="True" />

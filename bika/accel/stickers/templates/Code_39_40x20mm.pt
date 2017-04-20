@@ -1,0 +1,93 @@
+<!--
+    Template used to render one barcode with dimensions of 40x20mm.
+
+    To retrieve the item, use view.current_item, that will return an array with
+    the following structure:
+
+    [analysis_request_object, sample_object, sample_partition_object]
+
+    Although sample_object (position 1 in the array) will never be None,
+    analysis_request_object can be None when
+    a) The user requested to render stickers for samples (instead of ARs) or
+    b) The user requested to render stickers for sample partitions or
+    c) The user requested to render stickers for reference samples.
+
+    If c), both analysis_request_object and sample_partition_object will be None
+-->
+<tal:sticker define="
+    portal_state      context/@@plone_portal_state;
+    portal_url        portal_state/portal_url;
+    item              view/current_item;
+    ar                python:item[0];
+    ar_id             python:ar.getId() if ar else '';
+    sample            python:item[1];
+    part              python:item[2];
+    partnr            python:part.getId().split('-')[1];
+    sampler           python:sample.getSampler();
+    sample_id         python:sample.getId();
+    sample_point      python:sample.getSamplePoint() and sample.getSamplePoint().Title() or '';
+    sample_type       python:sample.getSampleType().Title();
+    sd                python:sample.getSamplingDate();
+    sampling_date     python:sd.Date() if sd else '';
+    client_sample_id  python:sample.getClientSampleID();
+    preservation      python:part.getPreservation() and part.getPreservation().Title() or '';
+    container         python:part.getContainer() and part.getContainer().Title() or '';
+    date_sampled      python:sample.getDateSampled() and sample.getDateSampled().Date();
+    analyses          python:part.getBackReferences('AnalysisSamplePartition');
+    field_analyses    python:[analysis for analysis in analyses if analysis.getService().getPointOfCapture()=='field'];
+    show_partitions   python:context.bika_setup.getShowPartitions();
+    smart_id          python:part.getId() if show_partitions else sample.getId();
+    hazardous         python:sample.getSampleType().getHazardous();
+
+    client            python:ar.aq_parent;
+    clientid          python:client.getId();
+    countries         nocall:modules/bika/lims/locales/COUNTRIES;
+    countryname       python:client.getPostalAddress().get('country', '');
+    countrycode       python:[co.get('ISO','') for co in countries if co.get('Country','')==countryname] if countryname else [];
+    countrycode       python:countrycode[0] if countrycode else '';
+    counties          nocall:modules/bika/lims/locales/STATES;
+    countyname        python:client.getPostalAddress().get('state', '');
+    countycode        python:[st[1] for st in counties if st[2]==countyname and st[0]==countrycode] if countyname else [];
+    countycode        python:countycode[0] if countycode else '';
+    districts         nocall:modules/bika/lims/locales/DISTRICTS;
+    districtname      python:client.getPostalAddress().get('district', '');
+    patient           python:ar.getField('Patient').get(ar);
+    clientpatientid   python:patient.getClientPatientID() if patient else '';
+    analysisprofile   python:ar.getProfiles()[0].Title() if ar.getProfiles() else '';
+    batchid           python:ar.getBatchID();
+    ">
+
+    <!-- Sample ID -->
+    <div class="sample-id">
+        <!--span tal:replace="string:${smart_id}"/-->
+        <img tal:condition="hazardous | nothing"
+             tal:attributes="src string:${portal_url}/++resource++bika.lims.images/hazardous.png"/>
+    </div>
+
+    <!-- Barcode -->
+    <div class="barcode"
+        tal:attributes="data-id smart_id;"
+        data-code="code93"
+        data-barHeight="14"
+        data-addQuietZone="true"
+        data-showHRI="false">
+    </div>
+
+    <!-- Some additional info about the sample -->
+    <div class="analysisrequest-info">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td tal:content="python:', '.join([countyname, districtname])"/>
+                <td class="align-right" tal:content="python:clientid"/>
+            </tr>
+            <tr>
+                <td tal:content="python:clientpatientid"/>
+                <td class="align-right" tal:content="python:analysisprofile"/>
+            </tr>
+            <tr>
+                <td class="date-sampled" tal:content="python:sampling_date"/>
+                <td class="align-right" tal:content="python:batchid"></td>
+            </tr>
+        </table>
+    </div>
+</tal:sticker>

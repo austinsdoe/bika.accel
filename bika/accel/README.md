@@ -24,16 +24,16 @@ Items in this folder
     named after their function, especially if they are general-purpose adapters
     which can be applied to more than one content type.  It's perfectly OK to
     splatter them around the source in any way you like, though.
-    
+
 - browser/
 
     Contains browser views, both new ones and those which are subclassed
     from the base bika.lims package and overriden in overrides.zcml.
- 
+
 - content/
 
     Any new content types (AT or Dexterity classes) should be created in this
-    folder.  Read the Plone docs for information on creating new AT or 
+    folder.  Read the Plone docs for information on creating new AT or
     Dexterity objects; nothing special here.
 
 - extenders/
@@ -46,9 +46,9 @@ Items in this folder
     strings which are "renamed" or overridden from the base package.
 
 - profiles/
- 
+
     This is the "Generic Setup" profile for this package.
- 
+
 - reports/
 
     Custom reports
@@ -61,6 +61,10 @@ Items in this folder
 - static/
 
     Static resources for this package (javascript, CSS and images).
+
+- stickers/
+
+    Custom stickers. Read stickers/readme.txt for further information.
 
 - tests/
 
