@@ -31,10 +31,10 @@ window.bika.accel.initialize = function() {
         window.bika.accel.initialized = true;
         return len;
     }
-    // We should wait after bika.lims being initialized
+    // We should wait after bika.lims & health being initialized (500+500)
     setTimeout(function() {
         return window.bika.accel.initialize();
-    }, 500);
+    }, 1000);
 };
 
 (function( $ ) {
