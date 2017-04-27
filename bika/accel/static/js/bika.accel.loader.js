@@ -15,6 +15,8 @@ window.bika.accel.controllers =  {
         ['AccelSiteView'],
     ".template-ar_add.portaltype-analysisrequest":
         ['AccelAddForm'],
+    ".portaltype-client.template-base_edit":
+        ['ClientEditForm'],
 };
 
 window.bika.accel.initialized = false;
