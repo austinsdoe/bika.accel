@@ -39,22 +39,22 @@
     smart_id          python:part.getId() if show_partitions else sample.getId();
     hazardous         python:sample.getSampleType().getHazardous();
 
-    client            python:ar.aq_parent;
-    clientid          python:client.getId();
+    client            python:view.getClientFromCurrentItem();
+    clientid          python:client.getId() if client else '';
     countries         nocall:modules/bika/lims/locales/COUNTRIES;
-    countryname       python:client.getPostalAddress().get('country', '');
+    countryname       python:client.getPostalAddress().get('country', '') if client else '';
     countrycode       python:[co.get('ISO','') for co in countries if co.get('Country','')==countryname] if countryname else [];
     countrycode       python:countrycode[0] if countrycode else '';
     counties          nocall:modules/bika/lims/locales/STATES;
-    countyname        python:client.getPostalAddress().get('state', '');
+    countyname        python:client.getPostalAddress().get('state', '') if client else '';
     countycode        python:[st[1] for st in counties if st[2]==countyname and st[0]==countrycode] if countyname else [];
     countycode        python:countycode[0] if countycode else '';
     districts         nocall:modules/bika/lims/locales/DISTRICTS;
-    districtname      python:client.getPostalAddress().get('district', '');
-    patient           python:ar.getField('Patient').get(ar);
+    districtname      python:client.getPostalAddress().get('district', '') if client else '';
+    patient           python:ar.getField('Patient').get(ar) if ar else '';
     clientpatientid   python:patient.getClientPatientID() if patient else '';
-    analysisprofile   python:ar.getProfiles()[0].Title() if ar.getProfiles() else '';
-    batchid           python:ar.getBatchID();
+    analysisprofile   python:ar.getProfiles()[0].Title() if ar and ar.getProfiles() else '';
+    batchid           python:ar.getBatchID() if ar else '';
     ">
 
     <!-- Sample ID -->
