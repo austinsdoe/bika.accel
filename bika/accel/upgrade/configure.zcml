@@ -3,4 +3,13 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="bika">
 
+ <genericsetup:upgradeStep
+        title="Add BatchID and BatchUID to AnalysisRequest"
+        description="Batches were introduced; set the BatchID to None on all existing ARs."
+        source="*"
+        destination="1"
+        handler="bika.accel.upgrade.step"
+        sortkey="1"
+        profile="bika.accel:default"/>
+
 </configure>
