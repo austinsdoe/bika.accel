@@ -11,7 +11,21 @@
 
     <adapter
         factory=".patient.PatientSchemaModifier"
-        name="case-modifier"
+        name="patient-modifier"
         provides="archetypes.schemaextender.interfaces.ISchemaModifier"/>
 
+    <!--
+
+    Tried to override Client Schema but didn't work as expected.
+
+    <adapter
+        factory=".client.ClientSchemaModifier"
+        name="client-modifier"
+        provides="archetypes.schemaextender.interfaces.ISchemaModifier"/>
+
+    <adapter
+        factory=".client.ClientSchemaExtender"
+        name="client-extender"/>
+
+    -->
 </configure>
