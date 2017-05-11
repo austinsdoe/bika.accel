@@ -30,4 +30,17 @@
       name="smsResult"
     />
 
+    <adapter
+      for="bika.lims.interfaces.IClient"
+      provides="bika.lims.interfaces.IIdServer"
+      factory=".idgenerator.IDGenerator"
+      name="clientIdGenerator"
+    />
+
+    <adapter
+      for="bika.lims.interfaces.IAnalysisRequest"
+      provides="bika.lims.interfaces.IIdServer"
+      factory=".idgenerator.IDGenerator"
+      name="arIdGenerator"
+    />
 </configure>
