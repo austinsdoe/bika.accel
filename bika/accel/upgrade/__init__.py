@@ -12,6 +12,7 @@ def step(tool):
     setup.runImportStepFromProfile('profile-bika.accel:default', 'jsregistry')
     setup.runImportStepFromProfile('profile-bika.accel:default', 'skins')
     setup.runImportStepFromProfile('profile-bika.lims:default', 'cssregistry')
+    setup.runImportStepFromProfile('profile-bika.lims:default', 'typeinfo')
     # Adding colums and indexes if needed
     pc = getToolByName(portal, 'portal_catalog')
     # Add country/province/district for client navigation
