@@ -28,4 +28,7 @@
         name="client-extender"/>
 
     -->
+    <adapter
+        factory=".analysisrequest.AnalysisRequestSchemaExtender"
+        name="ar-extender"/>
 </configure>

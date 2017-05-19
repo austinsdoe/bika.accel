@@ -37,6 +37,23 @@
           permission="bika.lims.ManageAnalysisRequests"
           layer="bika.lims.interfaces.IBikaLIMS"
         />
+
+        <unconfigure>
+        <browser:page
+          for="bika.lims.interfaces.IAnalysisRequestsFolder"
+          name="base_view"
+          class="bika.health.browser.analysisrequests.view.AnalysisRequestsView"
+          permission="bika.lims.ManageAnalysisRequests"
+          layer="bika.lims.interfaces.IBikaLIMS"
+        />
+        </unconfigure>
+        <browser:page
+          for="bika.lims.interfaces.IAnalysisRequestsFolder"
+          name="base_view"
+          class="bika.accel.browser.analysisrequests.view.AnalysisRequestsView"
+          permission="bika.lims.ManageAnalysisRequests"
+          layer="bika.lims.interfaces.IBikaLIMS"
+        />
     </configure>
 
 </configure>
