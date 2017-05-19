@@ -23,5 +23,5 @@ class AnalysisRequestsView(BaseView):
     def folderitem(self, obj, item, index):
         item = super(AnalysisRequestsView, self)\
             .folderitem(obj, item, index)
-        item['IDSRCode'] = ''
+        item['IDSRCode'] = obj.getIDSRCode
         return item
