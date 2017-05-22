@@ -31,4 +31,5 @@
     <adapter
         factory=".analysisrequest.AnalysisRequestSchemaExtender"
         name="ar-extender"/>
+    <adapter factory=".analysisrequest.getIDSRCode" name="getIDSRCode" />
 </configure>
