@@ -19,6 +19,8 @@ class AnalysisRequestSchemaExtender(object):
     adapts(IAnalysisRequest)
     implements(IOrderableSchemaExtender)
 
+    # This column will be set when AR is created via JSON API by Sync App
+    # of ACCEL IDSR. IDSCR Code will contain Client ID and Case ID
     fields = [
         ExtStringField('IDSRCode', default=''),
         ]

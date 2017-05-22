@@ -14,9 +14,6 @@ class AnalysisRequestsView(BaseView):
         for rs in self.review_states:
             i = rs['columns'].index('BatchID') + 1
             rs['columns'].insert(i, 'IDSRCode')
-        # Setting ip the patient catalog to be used in folderitem()
-        # self.patient_catalog = getToolByName(
-        #     self.context, CATALOG_PATIENT_LISTING)
         return super(AnalysisRequestsView, self).folderitems(
             full_objects=False)
 
