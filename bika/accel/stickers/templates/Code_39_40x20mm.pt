@@ -61,7 +61,7 @@
     <div class="sample-id">
         <!--span tal:replace="string:${smart_id}"/-->
         <img tal:condition="hazardous | nothing"
-             tal:attributes="src string:${portal_url}/++resource++bika.lims.images/hazardous.png"/>
+             tal:attributes="src string:${portal_url}/++resource++bika.accel.images/biohazardous.jpg"/>
     </div>
 
     <!-- Barcode -->
