@@ -2,6 +2,7 @@
 
 from Products.CMFCore.utils import getToolByName
 from bika.accel import logger
+from bika.lims.catalog import CATALOG_ANALYSIS_REQUEST_LISTING
 
 
 class Empty:
@@ -31,6 +32,12 @@ class BikaAccelGenerator:
         addColumn(pc, 'getCountry')
         addColumn(pc, 'getProvince')
         addColumn(pc, 'getDistrict')
+
+        # Add IDSRCode to AR Listing Catalog
+        arc = getToolByName(portal, CATALOG_ANALYSIS_REQUEST_LISTING)
+        addIndex(arc, 'getIDSRCode', 'FieldIndex')
+        addColumn(arc, 'getIDSRCode')
+
 
 def setupAccelVarious(context):
     """ Setup Bika site structure """
