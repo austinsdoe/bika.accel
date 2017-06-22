@@ -13,6 +13,7 @@
 .sticker .sample-id {
     height: 3mm;
     text-align:center;
+    margin-bottom: 5px;
 }
 .sticker .analysisrequest-info table,
 .sticker .sampling-date-info table {
