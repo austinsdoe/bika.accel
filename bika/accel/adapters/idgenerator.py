@@ -1,6 +1,7 @@
 from bika.lims.interfaces import IIdServer
 from zope.interface import implements
 from bika.lims.locales import COUNTRIES, STATES
+from bika.accel.config import COUNTY_CODES
 from Products.CMFCore.utils import getToolByName
 import re
 
@@ -77,8 +78,15 @@ class IDGenerator(object):
             if country['Country'] == self.context.getCountry():
                 country = country['ISO']
                 break
-        for state in STATES:
-            if state[0] == country and state[2] == self.context.getProvince():
-                province = state[1]
+
+        # First we will check if the county has 3 letter abbreviation, if not then return just number
+        for c in COUNTY_CODES:
+            if self.context.getProvince() == c.get('title'):
+                province = c.get("tla")
                 break
+        else:
+            for state in STATES:
+                if state[0] == country and state[2] == self.context.getProvince():
+                    province = state[1]
+                    break
         return country, province
