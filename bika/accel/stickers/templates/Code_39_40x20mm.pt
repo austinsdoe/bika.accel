@@ -60,15 +60,15 @@
     <!-- Sample ID -->
     <div class="sample-id">
         <!--span tal:replace="string:${smart_id}"/-->
-        <img tal:condition="hazardous | nothing"
-             tal:attributes="src string:${portal_url}/++resource++bika.accel.images/biohazardous.jpg"/>
+        <!-- img tal:condition="hazardous | nothing"
+             tal:attributes="src string:${portal_url}/++resource++bika.accel.images/biohazardous.jpg"/-->
     </div>
 
     <!-- Barcode -->
     <div class="barcode"
         tal:attributes="data-id smart_id;"
         data-code="code93"
-        data-barHeight="14"
+        data-barHeight="20"
         data-addQuietZone="true"
         data-showHRI="false">
     </div>
