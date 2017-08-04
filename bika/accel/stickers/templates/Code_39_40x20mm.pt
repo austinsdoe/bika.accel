@@ -85,7 +85,7 @@
                 <td class="align-right" tal:content="python:analysisprofile"/>
             </tr>
             <tr>
-                <td class="date-sampled" tal:content="python:sampling_date"/>
+                <td class="date-sampled" tal:content="python:date_sampled"/>
                 <td class="align-right" tal:content="python:batchid"></td>
             </tr>
         </table>
