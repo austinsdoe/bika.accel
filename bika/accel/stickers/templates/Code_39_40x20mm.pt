@@ -67,7 +67,7 @@
     <!-- Barcode -->
     <div class="barcode"
         tal:attributes="data-id smart_id;"
-        data-code="code93"
+        data-code="code39"
         data-barHeight="20"
         data-addQuietZone="true"
         data-showHRI="false">
